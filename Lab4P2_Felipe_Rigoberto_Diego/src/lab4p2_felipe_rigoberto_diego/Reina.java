@@ -11,7 +11,11 @@ package lab4p2_felipe_rigoberto_diego;
  */
 public class Reina extends Pieza{
 
-    char forma;
+    public Reina() {
+    }
+    public Reina(int posx, int posy, char forma, String color) {
+        super(posx, posy, forma, color);
+    } 
     
     @Override
     public boolean Movimiento() {

@@ -5,6 +5,8 @@
  */
 package lab4p2_felipe_rigoberto_diego;
 
+import java.awt.Color;
+
 /**
  *
  * @author felip
@@ -13,12 +15,16 @@ public abstract class Pieza implements Movimiento{
     
     int posx;
     int posy;
+    char forma;
+    String color;
 
     public Pieza() {
     }
-    public Pieza(int posx, int posy) {
+    public Pieza(int posx, int posy, char forma, String color) {
         this.posx = posx;
         this.posy = posy;
+        this.forma = forma;
+        this.color = color;
     }
 
     public int getPosx() {
@@ -34,7 +40,19 @@ public abstract class Pieza implements Movimiento{
     public void setPosy(int posy) {
         this.posy = posy;
     }
-    
-    
+
+    public char getForma() {
+        return forma;
+    }
+    public void setForma(char forma) {
+        this.forma = forma;
+    }
+
+    public String getColor() {
+        return color;
+    }
+    public void setColor(String color) {
+        this.color = color;
+    }
     
 }

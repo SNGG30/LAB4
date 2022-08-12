@@ -11,7 +11,11 @@ package lab4p2_felipe_rigoberto_diego;
  */
 public class Torre extends Pieza{
 
-    char forma;
+    public Torre() {
+    }
+    public Torre(int posx, int posy, char forma, String color) {
+        super(posx, posy, forma, color);
+    }
     
     @Override
     public boolean Movimiento() {

@@ -11,7 +11,11 @@ package lab4p2_felipe_rigoberto_diego;
  */
 public class Caballo extends Pieza{
 
-    char forma;
+    public Caballo() {
+    }
+    public Caballo(int posx, int posy, char forma, String color) {
+        super(posx, posy, forma, color);
+    }    
     
     @Override
     public boolean Movimiento() {
