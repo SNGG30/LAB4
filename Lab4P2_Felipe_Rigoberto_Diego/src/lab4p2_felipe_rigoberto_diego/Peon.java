@@ -13,7 +13,7 @@ public class Peon extends Pieza{
 
     public Peon() {
     }
-    public Peon(int posx, int posy, char forma, String color) {
+    public Peon(int posx, int posy, char forma, String color){
         super(posx, posy, forma, color);
     }
     

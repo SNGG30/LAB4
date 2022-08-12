@@ -22,10 +22,12 @@ public class Lab4P2_Felipe_Rigoberto_Diego {
         
         Pieza[][] table = new Pieza[8][8];
         boolean wincon = false;
-
+        boolean temp = false;
+        String col = "";
+        
         fill(table);
         print(table);
-        
+        int turn = 1;
         lea = new Scanner(System.in);
         System.out.print("Ingrese su nombre jugador 1: ");
         String ply1 = lea.nextLine();
@@ -34,8 +36,24 @@ public class Lab4P2_Felipe_Rigoberto_Diego {
         System.out.print("Ingrese su nombre jugador 2: ");
         String ply2 = lea.nextLine();
         
+        System.out.println();
+        
         while(wincon == false){
+            if(turn % 2 != 0){
+               System.out.print("Turno de " + ply1);
+               System.out.println();
+               col = "white";
+            }else{
+               System.out.print("Turno de " + ply2);
+               System.out.println();
+               col = "black";
+            }
             
+            lea = new Scanner(System.in);
+            System.out.print("Ingrese un movimiento <tipo de pieza>|<ubicación actual>|<destino>: ");
+            String move = lea.nextLine();
+            
+            turn++;
         }
         
         
