@@ -6,6 +6,7 @@
 package lab4p2_felipe_rigoberto_diego;
 
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 /**
  *
@@ -26,7 +27,6 @@ public class Lab4P2_Felipe_Rigoberto_Diego {
         String col = "";
         
         fill(table);
-        print(table);
         int turn = 1;
         lea = new Scanner(System.in);
         System.out.print("Ingrese su nombre jugador 1: ");
@@ -39,6 +39,8 @@ public class Lab4P2_Felipe_Rigoberto_Diego {
         System.out.println();
         
         while(wincon == false){
+            print(table);
+            
             if(turn % 2 != 0){
                System.out.print("Turno de " + ply1);
                System.out.println();
@@ -49,10 +51,15 @@ public class Lab4P2_Felipe_Rigoberto_Diego {
                col = "black";
             }
             
+            System.out.print("--Movimiento--");
+            System.out.println();
             lea = new Scanner(System.in);
-            System.out.print("Ingrese un movimiento <tipo de pieza>|<ubicación actual>|<destino>: ");
+            System.out.print("Ingrese un movimiento <tipo de pieza>|<fila actual>|<columna actual>|<fila destino>|<columna destino>: ");
             String move = lea.nextLine();
             
+            String [] tokens = move.split("|");
+            String t = tokens[10];
+            System.out.println(t);
             turn++;
         }
         
@@ -109,4 +116,50 @@ public class Lab4P2_Felipe_Rigoberto_Diego {
             cont++;
         }
     }
+    
+    public static boolean movpeon(int x, int y, Peon peon, Pieza table[][]) {
+
+        if ( peon.getColor().equals("white")) {
+            if (x == peon.getPosx() && (y != peon.getPosy() + 1 || table[y][x] != null)) {
+                System.out.println("Movimiento no posible");
+                return false;
+            }// fin del segundo if
+            // fin del primer if
+            else if (x != peon.getPosx() + 1 || y != peon.getPosy() + 1) {
+                System.out.println("Movimiento no valido");
+                return false;
+               }
+             else if (table[y][x].getColor().equals("white")) {
+                System.out.println("Movimiento no valido");
+                return false;
+            }
+                else {
+                return true;
+
+            }
+
+        }//fin del primer if
+        else {
+            
+        
+         if (x == peon.getPosx() && (y != peon.getPosy() - 1 || table[y][x] != null)) {
+                System.out.println("Movimiento no posible");
+                return false;
+            }// fin del segundo if
+            // fin del primer if
+            else if (x != peon.getPosx() - 1 || y != peon.getPosy() - 1) {
+                System.out.println("Movimiento no valido");
+                return false;
+               }
+             else if (table[y][x].getColor().equals("black")) {
+                System.out.println("Movimiento no valido");
+                return false;
+            }
+                else {
+                return true;
+
+            }
+        }// fin del else
+        
+    }// fin de movpeon
 }
