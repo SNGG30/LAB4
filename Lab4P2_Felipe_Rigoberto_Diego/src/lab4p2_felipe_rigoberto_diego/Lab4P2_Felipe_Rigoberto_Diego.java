@@ -304,4 +304,13 @@ public class Lab4P2_Felipe_Rigoberto_Diego {
          }
         return bandera;
     }
+    public static boolean movcaballo(int x, int y, Caballo caballo, Pieza table[][]) {
+        int varx = x - caballo.getPosx();
+        int vary = y - caballo.getPosy();
+        boolean bandera = true;
+        if (varx != 1 && varx != 2 || vary != 1 && vary != 2) {
+            bandera = false;
+        }
+        return bandera ;
+    }
 }
