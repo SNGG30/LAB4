@@ -167,38 +167,141 @@ public class Lab4P2_Felipe_Rigoberto_Diego {
         int varx = x - alfil.getPosx();
         int vary = y - alfil.getPosy();
         int contador = 1;
-        if (varx == vary) {
-            for (int i = 0; i < Math.abs(varx); i++) {
-                if (varx < 0 && vary > 0) {
-                    if (table[alfil.getPosy() + contador][alfil.getPosx() - contador] != null) {
-                        return false;
-                    }// 
-                }// fin del if varx<0 
-                else if (varx < 0 && vary < 0) {
-                    if (table[alfil.getPosy() + contador][alfil.getPosx() + contador] != null) {
-                        return false;
-                    }
-                }// fin del else if
-                else if (varx > 0 && vary < 0) {
-                    if (table[alfil.getPosy() + contador][alfil.getPosx() - contador] != null) {
-                        return false;
-                    }
-                }// fin del else if
-                else if (varx > 0 && vary > 0) {
-                    if (table[alfil.getPosy() - contador][alfil.getPosx() - contador] != null) {
-                        return false;
-                    }
-                }// fin del else if
+        boolean bandera;
+        if (alfil.getColor().equals(table[y][x].getColor())) {
+            bandera = false;;
+        } else {
+            bandera = true;
+            if (varx == vary) {
+                for (int i = 0; i < Math.abs(varx); i++) {
+                    if (varx < 0 && vary > 0) {
+                        if (table[alfil.getPosy() + contador][alfil.getPosx() - contador] != null) {
+                            bandera = false;
+                        }// 
+                    }// fin del if varx<0 
+                    else if (varx < 0 && vary < 0) {
+                        if (table[alfil.getPosy() + contador][alfil.getPosx() + contador] != null) {
+                            bandera = false;
+                        }
+                    }// fin del else if
+                    else if (varx > 0 && vary < 0) {
+                        if (table[alfil.getPosy() + contador][alfil.getPosx() - contador] != null) {
+                            bandera = false;
+                        }
+                    }// fin del else if
+                    else if (varx > 0 && vary > 0) {
+                        if (table[alfil.getPosy() - contador][alfil.getPosx() - contador] != null) {
+                            bandera = false;
+                        }
+                    }// fin del else if
+                    contador++;
+                }// fin del for
 
-            }// fin del for
-            if (alfil.getColor().equals(table[y][x].getColor())) {
-                return false;
+            }// fin del primer if varx == vary 
+            else {
+                bandera = false;;
             }
-            else return true;
-        }// fin del primer if varx == vary 
-        else {
-            return false;
         }
+        return bandera;
+    }// fin de movalfil
+    public static boolean movtorre(int x, int y, Torre torre, Pieza table[][]) {
+        int varx = x - torre.getPosx();
+        int vary = y - torre.getPosy();
+        int contador = 1;
+        boolean bandera = true;
+        if (torre.getColor().equals(table[y][x].getColor())) {
+            bandera = false;
 
-    }// fin de movalfil 
+        } else {
+
+            if ((varx != 0 && vary != 0)) {
+                bandera = false;
+            } else {
+                for (int i = 0; i < Math.abs(varx); i++) {
+                    if (varx < 0 && vary > 0) {
+                        if (table[torre.getPosy() + contador][torre.getPosx() - contador] != null) {
+                            bandera = false;
+                        }// 
+                    }// fin del if varx<0 
+                    else if (varx < 0 && vary < 0) {
+                        if (table[torre.getPosy() + contador][torre.getPosx() + contador] != null) {
+                            bandera = false;
+                        }
+                    }// fin del else if
+                    else if (varx > 0 && vary < 0) {
+                        if (table[torre.getPosy() + contador][torre.getPosx() - contador] != null) {
+                            bandera = false;
+                        }
+                    }// fin del else if
+                    else if (varx > 0 && vary > 0) {
+                        if (table[torre.getPosy() - contador][torre.getPosx() - contador] != null) {
+                            bandera = false;
+                        }
+                    }// fin del else if
+                    contador++;
+                }// fin del for
+
+            }
+        }// fin del primer else
+        return bandera;
+    }// fin de movtorre
+    public static boolean movreina(int x, int y, Reina reina, Pieza table[][]) {
+        int varx = x - reina.getPosx();
+        int vary = y - reina.getPosy();
+        int contador = 1;
+        boolean bandera = true;
+        if (reina.getColor().equals(table[y][x].getColor())) {
+            bandera = false;
+
+        } else {
+
+            if ((varx != 0 && vary != 0) || varx != vary) {
+                bandera = false;
+            } else {
+                for (int i = 0; i < Math.abs(varx); i++) {
+                    if (varx < 0 && vary > 0) {
+                        if (table[reina.getPosy() + contador][reina.getPosx() - contador] != null) {
+                            bandera = false;
+                        }// 
+                    }// fin del if varx<0 
+                    else if (varx < 0 && vary < 0) {
+                        if (table[reina.getPosy() + contador][reina.getPosx() + contador] != null) {
+                            bandera = false;
+                        }
+                    }// fin del else if
+                    else if (varx > 0 && vary < 0) {
+                        if (table[reina.getPosy() + contador][reina.getPosx() - contador] != null) {
+                            bandera = false;
+                        }
+                    }// fin del else if
+                    else if (varx > 0 && vary > 0) {
+                        if (table[reina.getPosy() - contador][reina.getPosx() - contador] != null) {
+                            bandera = false;
+                        }
+                        }// fin del else if
+                    contador++;
+                }// fin del for
+
+            }
+        }// fin del primer else
+        return bandera;
+    }
+    public static boolean movrey(int x, int y, Rey rey, Pieza table[][]) {
+
+        int varx = x - rey.getPosx();
+        int vary = y - rey.getPosy();
+        int contador = 1;
+        boolean bandera = true;
+        
+         if (rey.getColor().equals(table[y][x].getColor())) {
+            bandera = false;
+
+        } else {
+        
+        if (varx!=1 || vary !=1){
+        bandera = false;
+        }
+         }
+        return bandera;
+    }
 }
