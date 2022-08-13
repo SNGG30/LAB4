@@ -117,6 +117,7 @@ public class Lab4P2_Felipe_Rigoberto_Diego {
         }
     }
     
+    //Agarramos atributos y mandamos a clase
     public static boolean movpeon(int x, int y, Peon peon, Pieza table[][]) {
 
         if ( peon.getColor().equals("white")) {
@@ -162,4 +163,42 @@ public class Lab4P2_Felipe_Rigoberto_Diego {
         }// fin del else
         
     }// fin de movpeon
+    public static boolean movalfil(int x, int y, Alfil alfil, Pieza table[][]) {
+        int varx = x - alfil.getPosx();
+        int vary = y - alfil.getPosy();
+        int contador = 1;
+        if (varx == vary) {
+            for (int i = 0; i < Math.abs(varx); i++) {
+                if (varx < 0 && vary > 0) {
+                    if (table[alfil.getPosy() + contador][alfil.getPosx() - contador] != null) {
+                        return false;
+                    }// 
+                }// fin del if varx<0 
+                else if (varx < 0 && vary < 0) {
+                    if (table[alfil.getPosy() + contador][alfil.getPosx() + contador] != null) {
+                        return false;
+                    }
+                }// fin del else if
+                else if (varx > 0 && vary < 0) {
+                    if (table[alfil.getPosy() + contador][alfil.getPosx() - contador] != null) {
+                        return false;
+                    }
+                }// fin del else if
+                else if (varx > 0 && vary > 0) {
+                    if (table[alfil.getPosy() - contador][alfil.getPosx() - contador] != null) {
+                        return false;
+                    }
+                }// fin del else if
+
+            }// fin del for
+            if (alfil.getColor().equals(table[y][x].getColor())) {
+                return false;
+            }
+            else return true;
+        }// fin del primer if varx == vary 
+        else {
+            return false;
+        }
+
+    }// fin de movalfil 
 }
