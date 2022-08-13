@@ -308,9 +308,12 @@ public class Lab4P2_Felipe_Rigoberto_Diego {
         int varx = x - caballo.getPosx();
         int vary = y - caballo.getPosy();
         boolean bandera = true;
+        if (caballo.getColor().equals(table[y][x].getColor())) {
+            bandera = false;}
+        else{
         if (varx != 1 && varx != 2 || vary != 1 && vary != 2) {
             bandera = false;
-        }
+        }}
         return bandera ;
     }
 }
